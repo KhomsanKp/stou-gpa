@@ -6,5 +6,9 @@
 
 * {
     font-family: 'Prompt', sans-serif;
+    touch-action: manipulation;
+
 }
+
+
 

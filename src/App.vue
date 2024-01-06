@@ -1,17 +1,29 @@
 <template>
-  <Modal v-model="isOpen" @is-close="isClose" :gpa="gpa" />
+  <Modal v-model="isOpen" @is-close="isClose">
+    <div
+      class="flex absolute border border-green-500 top-[25%] flex-col h-fit py-5 px-10 bg-white rounded-3xl z-20 animate__animated animate__shakeY animate__slow	1s">
+      <h6 class="text-2xl text-green-600 font-semibold text-center">ผลการคำนวณ</h6>
+      <div class="border-b my-3" />
+      <p class="text-lg text-gray-500 italic">สอบผ่าน : <span class="text-gray-600 ml-5 mr-3">{{ gradeH + gradeS }}</span> วิชา</p>
+      <p class="text-lg text-gray-500 italic">เกรด S : <span class="text-gray-600 ml-5 mr-3">{{ gradeS }}</span> วิชา</p>
+      <p class="text-lg text-gray-500 italic">เกรด H : <span class="text-gray-600 ml-5 mr-3">{{ gradeH }}</span> วิชา</p>
+      <p class="text-xl mt-5 mb-3 text-green-600">
+       เกรดเฉลี่ยสะสม : <span class="font-bold text-2xl border-b-2 text-blue-600 border-blue-600 ml-5">{{ gpa }}</span>
+      </p>
+    </div>
+  </Modal>
 
-  <div class="md:container mx-auto px-3">
-    <Transition enter-active-class="animate__animated animate__backInLeft" leave-active-class="animate__animated animate__backOutLeft">
+  <div class="md:container mx-auto px-3 w-full h-screen">
+    <div class="flex justify-center flex-wrap">
       <h1
-      class="mx-auto my-5 max-w-[500px]  bg-amber-400 shadow-xl rounded-full font-black px-7 text-2xl py-5 flex justify-center items-center text-center text-green-700 animate__animated animate__backInLeft">
-      คำนวณเกรดเฉลื่ย (GPA)
-      <span class="px-3 py-2 ml-3 rounded-full bg-white">STOU</span>
-    </h1>
-  </Transition>
+        class="mt-5 bg-amber-400 w-full border border-green-700 shadow-xl md:text-2xl rounded-full font-black px-6 text-xl py-5 text-center text-green-700 animate__animated animate__backInLeft">
+        คำนวณเกรด
+        <span class="px-3 py-2 ml-5 rounded-full border border-green-600 bg-white">STOU</span>
+      </h1>
+    </div>
 
-    <main class="mx-auto max-w-[500px] mt-10">
-      <div class="border  block mx-auto w-full h-full rounded-3xl py-10 shadow-xl animate__animated animate__backInRight">
+    <main class="flex justify-center mt-10">
+      <div class="border w-full  rounded-3xl px-6 py-5 shadow-xl animate__animated animate__backInRight">
         <FormInput :is-valid-s="checkForm.isValidS" :is-valid-h="checkForm.isValidH" :is-valid-all="checkForm.isValidAll"
           v-model:grade-h="gradeH" v-model:grade-s="gradeS" @submit-form="submitForm" @reset-form="resetForm" />
       </div>
@@ -73,8 +85,6 @@ const submitForm = () => {
     gpa.value = gpaValue.toFixed(2)
     isOpen.value = true
 
-    gradeH.value = ''
-    gradeS.value = ''
   } else {
     checkForm.isValidH = false
     checkForm.isValidS = false
@@ -87,12 +97,15 @@ const resetForm = () => {
   gpa.value = ''
 
   checkForm.isValidH = true
-    checkForm.isValidS = true
+  checkForm.isValidS = true
+  checkForm.isValidAll = true
 }
 
 const isClose = () => {
   isOpen.value = false
   gpa.value = ''
+
+  resetForm()
 }
 
 interface CheckForm {
