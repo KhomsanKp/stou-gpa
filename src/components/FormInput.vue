@@ -5,7 +5,7 @@
                     class="text-green-500 font-bold ring ring-green-500 rounded-3xl px-4 ml-5"
                     :class="[total < 1 || total > 24 ? 'text-red-500 ring ring-red-500' : '']">{{ total }}</span></p>
 
-            <p v-if="!props.isValidAll && total < 1 || total > 24" class="text-sm mb-10 text-red-500 text-left font-semibold border-b border-red-500">* ชุดวิชาที่สอบผ่านมีค่ารเหว่าง 1 - 24</p>
+            <p v-if="!props.isValidAll && total < 1 || total > 24" class="text-sm mb-10 text-red-500 text-left font-semibold border-b border-red-500">* ชุดวิชาที่สอบผ่านมีค่าระหว่าง 1 - 24</p>
 
             <p v-if="!props.isValidS" class="text-red-500 text-sm">* เกรด S มีค่าระหว่าง 0 - 24</p>
             <input type="number" placeholder="จำนวนเกรด S"

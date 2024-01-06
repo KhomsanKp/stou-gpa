@@ -14,7 +14,7 @@
   </Modal>
 
   <div class="md:container mx-auto px-3 w-full h-screen">
-    <div class="flex justify-center flex-wrap">
+    <div v-if="!isHonor" class="flex justify-center flex-wrap">
       <h1
         class="mt-5 bg-amber-400 w-full border border-green-700 shadow-xl md:text-2xl rounded-full font-black px-6 text-xl py-5 text-center text-green-700 animate__animated animate__backInLeft">
         คำนวณเกรด
@@ -22,10 +22,47 @@
       </h1>
     </div>
 
-    <main class="flex justify-center mt-10">
-      <div class="border w-full  rounded-3xl px-6 py-5 shadow-xl animate__animated animate__backInRight">
-        <FormInput :is-valid-s="checkForm.isValidS" :is-valid-h="checkForm.isValidH" :is-valid-all="checkForm.isValidAll"
+    <main class="mt-10 ">
+      <div v-if="!isHonor" class="flex justify-center">
+        <div class="border w-full rounded-3xl px-6 py-5 shadow-xl animate__animated animate__backInRight">
+          <FormInput :is-valid-s="checkForm.isValidS" :is-valid-h="checkForm.isValidH" :is-valid-all="checkForm.isValidAll"
           v-model:grade-h="gradeH" v-model:grade-s="gradeS" @submit-form="submitForm" @reset-form="resetForm" />
+        </div>
+      </div>
+
+      <div v-if="!isHonor" class="mt-10 flex justify-center animate__animated  animate__backInUp">
+        <button class="drop-shadow-xl flex justify-center items-center gap-1 text-2xl text-blue-500 hover:underline" 
+          @click="isHonor = true"
+        >
+          <span class="text-green-500"><IconLink /></span>
+          คุณสมบัติผู้ได้รับเกียรตินิยม
+        </button>
+      </div>
+
+      <div v-if="isHonor" class="block p-3 drop-shadow-2xl w-full h-fit animate__animated  animate__backInDown">
+        <h2 class="font-semibold mt-5 text-gray-600">ผู้ที่มีสิทธิได้รับเกียรตินิยมอันดับหนึ่ง</h2>
+        <ul class="list-inside list-disc ml-5 italic text-gray-500">
+          <li>สอบผ่านชุดวิชาต่างๆ ครบตามโครงสร้างหลักสูตรภายในกำหนดเวลาของหลักสูตร</li>
+          <li>ไม่เคยสอบได้คะแนนลำดับขั้น  U  ในชุดวิชาใดตลอดหลักสูตร</li>
+          <li>ไม่เคยเรียนซ้ำชุดวิชาใดเพื่อยกระดับคะแนน</li>
+          <li>มีชุดวิชาสะสมของลำดับขั้น  H  เป็นจำนวนตั้งแต่สามในสี่ขึ้นไปของชุดวิชาในหลักสูตรทั้งหมด</li>
+          <li>นักศึกษาที่ได้รับการเทียบงานรายวิชาหรือโอนชุดวิชาจะไม่มีสิทธิได้รับปริญญาเกียรตินิยม</li>
+        </ul>
+
+        <div class="border-b mt-5 border-green-500" />
+
+        <h2 class="font-semibold mt-5 text-gray-600">คุณสมบัติผู้ได้รับเกียรตินิยมอันดับสอง</h2>
+        <ul class="list-inside list-disc ml-5 italic text-gray-500">
+          <li>สอบผ่านชุดวิชาต่างๆ ครบตามโครงสร้างหลักสูตรภายในกำหนดเวลาของหลักสูตร</li>
+          <li>ไม่เคยสอบได้คะแนนลำดับขั้น U ในชุดวิชาใดตลอดหลักสูตร</li>
+          <li>ไม่เคยเรียนซ้ำชุดวิชาใดเพื่อยกระดับคะแนน</li>
+          <li>มีชุดวิชาสะสมของลำดับขั้น H เป็นจำนวนไม่น้อยกว่าครึ่งหนึ่งของชุดวิชาสะสมทั้งหมด</li>
+          <li>นักศึกษาที่ได้รับการเทียบงานรายวิชาหรือโอนชุดวิชาไม่มีสิทธิได้รับปริญญาเกียรตินิยม</li>
+        </ul>
+
+        <div class="border-b mt-5 border-green-500" />
+
+        <button class="text-xl block mx-auto mt-10  hover:font-bold ring ring-red-500 rounded-3xl px-3 text-red-500 hover:ring-red-400 hover:text-red-400 hover:px-4 hover:py-1" @click="isHonor = false">X ปิด</button>
       </div>
     </main>
   </div>
@@ -35,8 +72,10 @@
 import { reactive, ref, watchEffect } from 'vue';
 import FormInput from './components/FormInput.vue';
 import Modal from './components/Modal.vue';
+import IconLink from './components/Icons/IconLink.vue'
 
 const isOpen = ref<Boolean>(false)
+const isHonor = ref<Boolean>(false)
 
 const gradeH = ref<Number | any>('')
 const gradeS = ref<Number | any>('')
