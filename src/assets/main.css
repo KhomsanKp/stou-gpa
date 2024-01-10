@@ -7,7 +7,10 @@
 * {
     font-family: 'Prompt', sans-serif;
     touch-action: manipulation;
+}
 
+body {
+    background-color: rgb(241, 240, 240);
 }
 
 

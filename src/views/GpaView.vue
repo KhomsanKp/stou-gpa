@@ -17,18 +17,18 @@
         </div>
     </Modal>
 
-    <div class="md:container mx-auto px-3 w-full h-screen">
-        <div v-if="!isHonor && !isGrade" class="flex justify-center flex-wrap">
-            <h1
-                class="mt-5 bg-amber-400 w-full border border-green-700 shadow-xl md:text-2xl rounded-full font-black px-6 text-xl py-5 text-center text-green-700 animate__animated animate__backInLeft">
-                คำนวณเกรด
-                <span class="px-3 py-2 ml-5 rounded-full border border-green-600 bg-white">STOU</span>
-            </h1>
-        </div>
+    <div class="md:container mx-auto px-3 w-full py-5">
 
-        <main class="mt-10 ">
+        <h1 v-if="!isHonor && !isGrade"
+            class="mt-5 rounded text-2xl py-3 font-bold text-green-500 md:text-center border-green-500 border-l-8 pl-3 animate__animated animate__backInLeft">
+            คำนวณเกรด
+            <span class="px-3 py-2 ml-5 rounded-full border border-yellow-500 text-yellow-500">STOU</span>
+        </h1>
+
+
+        <main class="mt-5">
             <div v-if="!isHonor && !isGrade" class="flex justify-center">
-                <div class="border w-full rounded-3xl px-6 py-5 shadow-xl animate__animated animate__backInRight">
+                <div class="border bg-white w-full rounded-3xl px-6 py-5 shadow-xl animate__animated animate__backInRight">
                     <FormInput :is-valid-s="checkForm.isValidS" :is-valid-h="checkForm.isValidH"
                         :is-valid-all="checkForm.isValidAll" v-model:grade-h="gradeH" v-model:grade-s="gradeS"
                         @submit-form="submitForm" @reset-form="resetForm" />
@@ -36,8 +36,7 @@
             </div>
 
             <div class="mt-10 flex justify-center gap-5 flex-col">
-                <button
-                    v-if="!isHonor && !isGrade"
+                <button v-if="!isHonor && !isGrade"
                     class="drop-shadow-xl flex justify-center items-center gap-1 text-lg text-blue-500 hover:underline animate__animated  animate__backInUp"
                     @click="isHonor = true">
                     คุณสมบัติผู้ได้รับเกียรตินิยม
@@ -46,8 +45,7 @@
                     </span>
                 </button>
 
-                <button
-                    v-if="!isGrade && !isHonor"
+                <button v-if="!isGrade && !isHonor"
                     class="drop-shadow-xl flex justify-center items-center gap-1 text-lg text-blue-500 hover:underline animate__animated  animate__backInUp"
                     @click="isGrade = true">
                     คำอธิบายเกรดต่างๆ มสธ.
