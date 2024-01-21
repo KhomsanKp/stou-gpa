@@ -1,64 +1,75 @@
 <template>
-    <Modal v-model="isOpen" @is-close="isClose">
-        <div
-            class="flex absolute border border-green-500 top-[25%] flex-col h-fit py-5 px-10 bg-white rounded-3xl z-20 animate__animated animate__heartBeat">
-            <h6 class="text-2xl text-green-600 font-semibold text-center">ผลการคำนวณ</h6>
-            <div class="border-b my-3" />
-            <p class="text-lg text-gray-500 italic">สอบผ่าน : <span class="text-gray-600 ml-5 mr-3">{{ gradeH + gradeS
-            }}</span> วิชา</p>
-            <p class="text-lg text-gray-500 italic">เกรด S : <span class="text-gray-600 ml-5 mr-3">{{ gradeS }}</span> วิชา
-            </p>
-            <p class="text-lg text-gray-500 italic">เกรด H : <span class="text-gray-600 ml-5 mr-3">{{ gradeH }}</span> วิชา
-            </p>
-            <p class="text-xl mt-5 mb-3 text-green-600">
-                เกรดเฉลี่ยสะสม : <span class="font-bold text-2xl border-b-2 text-blue-600 border-blue-600 ml-5">{{ gpa
-                }}</span>
-            </p>
-        </div>
-    </Modal>
+    <div>
+        <Teleport to="body">
 
-    <div class="md:container mx-auto px-3 w-full py-5">
-
-        <h1 v-if="!isHonor && !isGrade"
-            class="mt-5 rounded text-2xl py-3 font-bold text-green-500 md:block md:mx-auto md:w-2/3 border-green-500 border-l-8 pl-3 animate__animated animate__backInLeft">
-            คำนวณเกรด
-            <span class="px-3 py-2 ml-5 rounded-full border border-yellow-500 text-yellow-500">STOU</span>
-        </h1>
-
-
-        <main class="mt-5">
-            <div v-if="!isHonor && !isGrade" class="flex justify-center md:block md:mx-auto md:w-2/3">
-                <div class="border bg-white w-full rounded-3xl px-6 py-5 shadow-xl animate__animated animate__backInRight">
-                    <FormInput :is-valid-s="checkForm.isValidS" :is-valid-h="checkForm.isValidH"
-                        :is-valid-all="checkForm.isValidAll" v-model:grade-h="gradeH" v-model:grade-s="gradeS"
-                        @submit-form="submitForm" @reset-form="resetForm" />
+            <Modal v-model="isOpen" @is-close="isClose">
+                <div
+                    class="flex absolute border border-green-500 top-[25%] flex-col h-fit py-5 px-10 bg-white rounded-3xl z-20 animate__animated animate__heartBeat animate__slow 1s">
+                    <h6 class="text-2xl text-green-600 font-semibold text-center">ผลการคำนวณ</h6>
+                    <div class="border-b my-3" />
+                    <p class="text-lg text-gray-500 italic">สอบผ่าน : <span class="text-gray-600 ml-5 mr-3">{{ gradeH +
+                        gradeS
+                    }}</span> วิชา</p>
+                    <p class="text-lg text-gray-500 italic">เกรด S : <span class="text-gray-600 ml-5 mr-3">{{ gradeS
+                    }}</span>
+                        วิชา
+                    </p>
+                    <p class="text-lg text-gray-500 italic">เกรด H : <span class="text-gray-600 ml-5 mr-3">{{ gradeH
+                    }}</span>
+                        วิชา
+                    </p>
+                    <p class="text-xl mt-5 mb-3 text-green-600">
+                        เกรดเฉลี่ยสะสม : <span class="font-bold text-2xl border-b-2 text-blue-600 border-blue-600 ml-5">{{
+                            gpa
+                        }}</span>
+                    </p>
                 </div>
+            </Modal>
+        </Teleport>
+
+        <div class="md:container mx-auto px-3 w-full py-5">
+
+            <h1 v-if="!isHonor && !isGrade"
+                class="mt-5 rounded text-2xl py-3 font-bold text-green-500 md:block md:mx-auto md:w-2/3 border-green-500 border-l-8 pl-3 animate__animated animate__backInLeft">
+                คำนวณเกรด
+                <span class="px-3 py-2 ml-5 rounded-full border border-yellow-500 text-yellow-500">STOU</span>
+            </h1>
+
+            <div class="mt-5">
+                <div v-if="!isHonor && !isGrade" class="flex justify-center md:block md:mx-auto md:w-2/3">
+                    <div
+                        class="border bg-white w-full rounded-3xl px-6 py-5 mt-5 shadow-xl animate__animated animate__backInRight">
+                        <FormInput :is-valid-s="checkForm.isValidS" :is-valid-h="checkForm.isValidH"
+                            :is-valid-all="checkForm.isValidAll" v-model:grade-h="gradeH" v-model:grade-s="gradeS"
+                            @submit-form="submitForm" @reset-form="resetForm" />
+                    </div>
+                </div>
+
+                <div class="mt-10 flex justify-center gap-5 flex-col">
+                    <button v-if="!isHonor && !isGrade"
+                        class="drop-shadow-xl flex justify-center items-center gap-1 text-lg text-blue-500 hover:underline animate__animated  animate__backInUp"
+                        @click="isHonor = true">
+                        คุณสมบัติผู้ได้รับเกียรตินิยม
+                        <span class="text-green-500">
+                            <IconLink />
+                        </span>
+                    </button>
+
+                    <button v-if="!isGrade && !isHonor"
+                        class="drop-shadow-xl flex justify-center items-center gap-1 text-lg text-blue-500 hover:underline animate__animated  animate__backInUp"
+                        @click="isGrade = true">
+                        คำอธิบายเกรดต่างๆ มสธ.
+                        <span class="text-green-500">
+                            <IconLink />
+                        </span>
+                    </button>
+                </div>
+
+                <HonorDetails v-model="isHonor" />
+
+                <GradeDetails v-model="isGrade" />
             </div>
-
-            <div class="mt-10 flex justify-center gap-5 flex-col">
-                <button v-if="!isHonor && !isGrade"
-                    class="drop-shadow-xl flex justify-center items-center gap-1 text-lg text-blue-500 hover:underline animate__animated  animate__backInUp"
-                    @click="isHonor = true">
-                    คุณสมบัติผู้ได้รับเกียรตินิยม
-                    <span class="text-green-500">
-                        <IconLink />
-                    </span>
-                </button>
-
-                <button v-if="!isGrade && !isHonor"
-                    class="drop-shadow-xl flex justify-center items-center gap-1 text-lg text-blue-500 hover:underline animate__animated  animate__backInUp"
-                    @click="isGrade = true">
-                    คำอธิบายเกรดต่างๆ มสธ.
-                    <span class="text-green-500">
-                        <IconLink />
-                    </span>
-                </button>
-            </div>
-
-            <HonorDetails v-model="isHonor" />
-
-            <GradeDetails v-model="isGrade" />
-        </main>
+        </div>
     </div>
 </template>
   
