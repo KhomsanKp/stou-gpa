@@ -9,7 +9,7 @@ interface ImportMetaEnv {
     VITE_APP_ID: String,
 }
 
-interface ImportMeta {
+interface ImportMetaEnv {
     API_KEY: String,
     AUTH_DOMAIN: String,
     PROJECT_ID: String,
