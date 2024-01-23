@@ -9,15 +9,6 @@ interface ImportMetaEnv {
     VITE_APP_ID: String,
 }
 
-interface ImportMetaEnv {
-    API_KEY: String,
-    AUTH_DOMAIN: String,
-    PROJECT_ID: String,
-    STORAGE_BUCKET: String,
-    MESSAGING_SENDER_ID: String,
-    APP_ID: String,
-}
-
 interface ImportMeta {
     readonly env: ImportMetaEnv
 }
