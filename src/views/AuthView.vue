@@ -1,6 +1,6 @@
 <template>
     <div class="mx-auto md:container px-3 py-5">
-        <div class="border rounded-3xl shadow-xl mt-5 p-3 bg-white w-2/3 block mx-auto">
+        <div class="border rounded-3xl shadow-xl mt-5 p-3 bg-white w-fit block mx-auto">
             <form @submit.prevent="login">
                 <div class="grid grid-cols-1">
                     <label for="Email" class="p-3">
@@ -22,11 +22,16 @@
                 </div>
             </form>
         </div>
+
+        <div class="mt-10 flex justify-center">
+            <RouterLink to="/" class="bg-blue-500 w-full px-3 py-2 rounded-3xl text-center text-white shadow-md">กลับหน้าหลัก</RouterLink>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue';
+import { RouterLink } from 'vue-router';
 import { useUserStore } from '../stores/user'
 import { useRouter } from 'vue-router';
 
