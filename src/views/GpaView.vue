@@ -1,7 +1,6 @@
 <template>
-    <div>
+    <div id="Gpa">
         <Teleport to="body">
-
             <Modal v-model="isOpen" @is-close="isClose">
                 <div
                     class="flex absolute border border-green-500 top-[25%] flex-col h-fit py-5 px-10 bg-white rounded-3xl z-20 animate__animated animate__heartBeat animate__slow 1s">
@@ -29,11 +28,11 @@
 
         <div class="md:container mx-auto px-3 w-full py-5">
 
-            <h1 v-if="!isHonor && !isGrade"
-                class="mt-5 rounded text-2xl py-3 font-bold text-green-500 md:block md:mx-auto md:w-2/3 border-green-500 border-l-8 pl-3 animate__animated animate__backInLeft">
+            <h2 v-if="!isHonor && !isGrade"
+                class="mt-5 rounded text-xl py-3 font-bold text-green-500 md:block md:mx-auto md:w-2/3 border-green-500 border-l-8 pl-5 animate__animated animate__backInLeft">
                 คำนวณเกรด
                 <span class="px-3 py-2 ml-5 rounded-full border border-yellow-500 text-yellow-500">STOU</span>
-            </h1>
+            </h2>
 
             <div class="mt-5">
                 <div v-if="!isHonor && !isGrade" class="flex justify-center md:block md:mx-auto md:w-2/3">

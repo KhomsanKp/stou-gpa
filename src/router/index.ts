@@ -22,6 +22,16 @@ const routes = [
         name: 'Gpa',
         component: () => import('@/views/GpaView.vue')
     },
+    {
+        path: '/quizzes',
+        name: 'Quizzes',
+        component: () => import('@/views/QuizzesView.vue')
+    },
+    {
+        path: '/Courses',
+        name: 'Courses',
+        component: () => import('@/views/CoursesView.vue')
+    },
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/NotFound.vue') },
 ]
 

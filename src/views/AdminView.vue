@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="Admin">
         <div>
             <div>
                 Addmin
