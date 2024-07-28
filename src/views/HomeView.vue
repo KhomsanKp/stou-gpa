@@ -1,28 +1,40 @@
 <template>
     <!-- View User backlist -->
-    <Modal v-model="isOpen" @is-close="isClose">
-        <div v-if="userDetail.length < 1"></div>
-        <div v-else class="w-[90%] h-[500px] overflow-x-hidden mt-16 bg-white py-5 px-3 border-2 border-red-500 rounded-3xl">
-            <h6 class="text-2xl font-semibold text-red-500 text-center pb-3 mb-3 border-b-2 border-red-500">คำเตือน!!!</h6>
+    <Teleport to="body">
+        <Modal v-model="isOpen" @is-close="isClose">
+            <div v-if="userDetail.length < 1 && searchValue !== '' && selectValue !== ''" class="bg-white mt-10 mx-3 rounded-3xl px-3 py-5">
+                <p class="text-center text-2xl text-green-500 mb-5 font-bold">ไม่พบรายชื่อนี้ ?</p>
+                <ul class="text-gray-500 px-3 space-y-2">
+                    <li><span class="text-red-500">***</span> ตรวจสอบประวัติคนขาย ก่อนโอนเงินเสมอ</li>
+                    <li><span class="text-red-500">***</span> ขอดูบัตรนักศึกษา + บัตรประชาชน + ชื่อบัญชีต้องตรงกัน ถ้าไม่ตรง <span class="text-red-500 font-semibold">"ถ้าไม่ตรงกัน ห้ามโอนเด็ดขาด"</span></li>
+                    <li><span class="text-red-500">***</span> ถ้าไม่ใช่บัญชีธนาคาร หรือพร้อมเพย์ <span class="text-red-500 font-semibold">"ห้ามโอนเด็ดขาด"</span> เช่น Lazada, Shopee, TrueMoney etc.</li>
+                </ul>
+            </div>
+            <div v-else
+                class="w-[90%] h-[500px] overflow-x-hidden mt-16 bg-white py-5 px-3 border-2 border-red-500 rounded-3xl">
+                <h6 class="text-2xl font-semibold text-red-500 text-center pb-3 mb-3 border-b-2 border-red-500">
+                    คำเตือน!!!</h6>
                 <p class="text-amber-600 text-center text-lg">ซื้อ-ขาย กับบุคคลนี้ อย่างระมัดระวัง</p>
 
-            <div v-for="infUser in userDetail" :key="infUser.id" class="mt-5 text-green-600 font-semibold">
-                <p class="text-red-500"><span class="text-black">Facebook name : </span>{{ infUser.facebookName }}</p>
-                <p class="text-gray-500 indent-4 mb-2">{{ infUser.note }}</p>
+                <div v-for="infUser in userDetail" :key="infUser.id" class="mt-5 text-green-600 font-semibold">
+                    <p class="text-red-500"><span class="text-black">Facebook name : </span>{{ infUser.facebookName }}
+                    </p>
+                    <p class="text-gray-500 indent-4 mb-2">{{ infUser.note }}</p>
 
-                <div v-if="infUser.refLink.length < 1"></div>
+                    <div v-if="infUser.refLink.length < 1"></div>
 
-                <div v-else class="w-full block h-1/2 overflow-y-auto">
-                    <p class="mb-3 text-xs">ข้อมูลเพิ่มเติม ?</p>
-                    <div>
-                        <a v-for="(link, index) in infUser.refLink" :key="index" :href="link"
-                            class="text-sky-500 hover:pb-1 mb-3 cursor-pointer hover:border-b hover:border-sky-500 text-ellipsis text-xs inline-block">
-                            {{ link }}</a>
+                    <div v-else class="w-full block h-1/2 overflow-y-auto">
+                        <p class="mb-3 text-xs">ข้อมูลเพิ่มเติม ?</p>
+                        <div>
+                            <a v-for="(link, index) in infUser.refLink" :key="index" :href="link" target="_blank"
+                                class="text-sky-500 hover:pb-1 mb-3 cursor-pointer hover:border-b hover:border-sky-500 text-ellipsis text-xs inline-block">
+                                {{ link }}</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </Modal>
+        </Modal>
+    </Teleport>
 
     <div id="Home" class="p-3 md:container mx-auto">
         <div class="md:container mx-auto my-5">
@@ -34,13 +46,17 @@
             </div>
 
             <div class=" grid gird-cols-1 md:grid-cols-3 gap-1 my-3 px-5">
+                <label for="name">
+                    <input type="radio" id="name" value="Name" v-model="selectValue" />
+                    ชื่อ
+                </label>
                 <label for="facebook">
                     <input type="radio" id="facebook" value="Facebook" v-model="selectValue" />
                     ชื่อใน Facebook
                 </label>
                 <label for="account">
                     <input type="radio" id="account" value="Account" v-model="selectValue" />
-                    เลขที่บัญชี / พร้อมเพย์
+                    เลขที่บัญชี / พร้อมเพย์ / TrueMoney
                 </label>
                 <label for="mobile">
                     <input type="radio" id="mobile" value="Mobile" v-model="selectValue" />
@@ -101,7 +117,7 @@ async function findUser() {
     await blackListUserStore.findUser(selectValue.value, searchValue.value)
     blackListUserStore.getUser.forEach((user) => userDetail.value.push(user))
 
-    if (userDetail.value.length < 1) {
+    if (selectValue.value === '' || searchValue.value === '') {
         return;
     } else {
         userDetail.value = blackListUserStore.getUser

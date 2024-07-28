@@ -67,6 +67,10 @@
                 <HonorDetails v-model="isHonor" />
 
                 <GradeDetails v-model="isGrade" />
+
+                <div class="text-center py-7 ">
+                    <RouterLink to="/" class="rounded-full shadow-sm hover:shadow-md px-3 py-2 bg-blue-500 text-white">กลับหน้าหลัก</RouterLink>
+                </div>
             </div>
         </div>
     </div>
@@ -79,6 +83,7 @@ import Modal from '@/components/Modal.vue';
 import IconLink from '@/components/Icons/IconLink.vue'
 import HonorDetails from '@/components/HonorDetails.vue'
 import GradeDetails from '@/components/GradeDetails.vue'
+import { RouterLink } from 'vue-router';
 
 const isOpen = ref<Boolean>(false)
 const isHonor = ref<Boolean>(false)

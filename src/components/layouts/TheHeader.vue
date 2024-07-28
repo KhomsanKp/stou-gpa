@@ -1,8 +1,10 @@
 <template>
     <header
-        class="md:container mx-auto flex justify-between px-5 shadow-md items-center h-[100px] bg-gradient-to-r from-green-300 to-yellow-300">
+        class=" flex justify-between px-5 shadow-md items-center h-[100px] bg-gradient-to-r from-green-300 to-yellow-300">
 
-        <h1 class=" font-black hover:cursor-pointer text-gray-500 italic drop-shadow-xl text-2xl"  @click="gotoHome">จัดทำเพื่อสมาชิกภายในกลุ่ม <span class="font-black text-3xl text-green-700">มสธ.</span></h1>
+        <h1 class="md:container mx-auto font-black hover:cursor-pointer text-gray-500 italic drop-shadow-xl text-2xl text-center"
+            @click="gotoHome">จัดทำเพื่อสมาชิกภายในกลุ่ม <span class="font-black text-3xl text-green-700">มสธ.</span>
+        </h1>
         <!-- <div v-if="routeName !== 'Auth'" class="grid grid-cols-1 justify-items-center hover:cursor-pointer" @click="gotoAuth" >
             <span class="text-green-700">
                 <Account />
