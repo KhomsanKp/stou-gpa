@@ -3,7 +3,7 @@
         <Teleport to="body">
             <Modal v-model="isOpen" @is-close="isClose">
                 <div
-                    class="flex absolute border border-green-500 top-[25%] flex-col h-fit py-5 px-10 bg-white rounded-3xl z-20 animate__animated animate__heartBeat animate__slow 1s">
+                    class="flex border border-green-500 flex-col h-fit mt-16 py-5 px-10 bg-white rounded-3xl z-20 animate__animated animate__heartBeat animate__slow 1s">
                     <h6 class="text-2xl text-green-600 font-semibold text-center">ผลการคำนวณ</h6>
                     <div class="border-b my-3" />
                     <p class="text-lg text-gray-500 italic">สอบผ่าน : <span class="text-gray-600 ml-5 mr-3">{{ gradeH +
