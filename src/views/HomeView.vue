@@ -64,9 +64,11 @@
                 </label>
             </div>
 
-            <div class="px-3 pt-3">
+            <div class="px-3 pt-3 space-x-3">
                 <button type="button" class="px-3 py-2 text-white w-1/4 hover:shadow-md bg-green-500 rounded-full"
                     @click="findUser">ค้นหา</button>
+                    <button type="button" class="px-3 py-2 text-white w-1/4 hover:shadow-md bg-amber-500 rounded-full"
+                    @click="isClose">ค้นหา</button>
             </div>
         </div>
 

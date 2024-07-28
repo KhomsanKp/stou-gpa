@@ -65,8 +65,8 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
         },
         {
             id: 'u007',
-            name: 'ศุภชัย​ ​คหินทพงศ์',
-            facebookName: 'ศุภชัย​ ​คหินทพงศ์',
+            name: 'ศุภชัย คหินทพงศ์',
+            facebookName: 'ศศุภชัย คหินทพงศ์',
             accountNumber: '4341561909',
             mobileNumber: '',
             refLink: ['https://www.blacklistseller.com/report/report_preview/319794'],
@@ -75,8 +75,8 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
         },
         {
             id: 'u008',
-            name: 'ศุภชัย​ ​คหินทพงศ์',
-            facebookName: 'ศุภชัย​ ​คหินทพงศ์',
+            name: 'ศุภชัย คหินทพงศ์',
+            facebookName: 'ศุภชัย คหินทพงศ์',
             accountNumber: '5980388400',
             mobileNumber: '',
             refLink: ['https://www.blacklistseller.com/report/report_preview/92671'],
@@ -94,7 +94,7 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
             note: 'ใช้หมายเลยบัญชีหลากหลาย เช่น บัญชีม้า, พร้อมเพย์, True wallet, Lazada, Shopee'
         },
         {
-            id: 'u009',
+            id: 'u010',
             name: 'มะลิวัลย์​ ขวัญสุข',
             facebookName: 'ช่างหนึ่ง ครับ',
             accountNumber: '5632800923',
