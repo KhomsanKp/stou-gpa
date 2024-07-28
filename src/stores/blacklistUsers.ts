@@ -85,7 +85,7 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
         },
         {
             id: 'u009',
-            name: 'มะลิวัลย์​ ขวัญสุข',
+            name: 'มะลิวัลย์ ขวัญสุข',
             facebookName: 'ช่างหนึ่ง ครับ',
             accountNumber: '2009093959',
             mobileNumber: '',
@@ -95,7 +95,7 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
         },
         {
             id: 'u010',
-            name: 'มะลิวัลย์​ ขวัญสุข',
+            name: 'มะลิวัลย์ ขวัญสุข',
             facebookName: 'ช่างหนึ่ง ครับ',
             accountNumber: '5632800923',
             mobileNumber: '',
