@@ -6,7 +6,7 @@
                 <p class="text-center text-2xl text-green-500 mb-5 font-bold">ไม่พบรายชื่อนี้ ?</p>
                 <ul class="text-gray-500 px-3 space-y-2">
                     <li><span class="text-red-500">***</span> ตรวจสอบประวัติคนขาย ก่อนโอนเงินเสมอ</li>
-                    <li><span class="text-red-500">***</span> ขอดูบัตรนักศึกษา + บัตรประชาชน + ชื่อบัญชีต้องตรงกัน ถ้าไม่ตรง <span class="text-red-500 font-semibold">"ถ้าไม่ตรงกัน ห้ามโอนเด็ดขาด"</span></li>
+                    <li><span class="text-red-500">***</span> ขอดูบัตรนักศึกษา + บัตรประชาชน + ชื่อบัญชี หลักฐานทั้ง 3 ชื่อต้องตรงกัน <span class="text-red-500 font-semibold">"ถ้าไม่ตรงกัน ห้ามโอนเด็ดขาด"</span></li>
                     <li><span class="text-red-500">***</span> ถ้าไม่ใช่บัญชีธนาคาร หรือพร้อมเพย์ <span class="text-red-500 font-semibold">"ห้ามโอนเด็ดขาด"</span> เช่น Lazada, Shopee, TrueMoney etc.</li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
 
     <div id="Home" class="p-3 md:container mx-auto">
         <div class="md:container mx-auto my-5">
-            <h2 class="text-2xl font-bold mb-3 text-red-500 pl-3">เข็คก่อนโอน ?</h2>
+            <h2 class="text-2xl font-bold mb-3 text-red-500 pl-3">เช็คก่อนโอน ?</h2>
 
             <div class="px-3">
                 <input type="text" id="serach" placeholder="ป้อนข้อมูลที่ต้องการค้นหา"
@@ -48,7 +48,7 @@
             <div class=" grid gird-cols-1 md:grid-cols-3 gap-1 my-3 px-5">
                 <label for="name">
                     <input type="radio" id="name" value="Name" v-model="selectValue" />
-                    ชื่อ
+                    ชื่อ-นามสกุล
                 </label>
                 <label for="facebook">
                     <input type="radio" id="facebook" value="Facebook" v-model="selectValue" />
@@ -80,7 +80,7 @@
         <nav class="grid gride-cols-1 md:grid-cols-2 gap-2 mt-5 text-gray-500 animate__animated animate__backInLeft">
 
             <RouterLink to="/gpa"
-                class="hover:text-green-500 hover:border-b hover:border-green-500 flex gap-7 justify-start items-center px-3 py-5">
+                class="text-yellow-500 hover:text-green-500 hover:border-b hover:border-green-500 flex gap-7 justify-start items-center px-3 py-5">
                 <span>
                     <GpaIcon />
                 </span>

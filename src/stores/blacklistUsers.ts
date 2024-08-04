@@ -103,6 +103,16 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
             imagesUrl: [],
             note: 'ใช้หมายเลยบัญชีหลากหลาย เช่น บัญชีม้า, พร้อมเพย์, True wallet, Lazada, Shopee'
         },
+        {
+            id: 'u011',
+            name: 'Natthaphon Viteecharoen',
+            facebookName: 'Natthaphon Viteecharoen',
+            accountNumber: '',
+            mobileNumber: '',
+            refLink: ['https://www.blacklistseller.com/report/report_preview/100037'],
+            imagesUrl: [],
+            note: 'ขายหนังสือทำกำไร ทักยืมเงิน ระวังกันด้วย'
+        },
     ])
     const userData = ref<Array<UserList>>([])
 
