@@ -105,11 +105,11 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
         },
         {
             id: 'u011',
-            name: 'Natthaphon Viteecharoen',
+            name: 'ณัฐภณ วิธีเจริญ',
             facebookName: 'Natthaphon Viteecharoen',
             accountNumber: '',
             mobileNumber: '',
-            refLink: ['https://www.blacklistseller.com/report/report_preview/100037'],
+            refLink: ['https://www.facebook.com/search/people/?q=Natthaphon%20Viteecharoen&sde=AbqYQQCuIq_5M5MKYA4Iw2z-7xyPApveqAXCe28_Flb57xRVS02IPjGGG4DWRathWwaD0uN042zmnORXBhq4wEPf'],
             imagesUrl: [],
             note: 'ขายหนังสือทำกำไร ทักยืมเงิน ระวังกันด้วย'
         },
