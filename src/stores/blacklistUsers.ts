@@ -116,7 +116,7 @@ export const useBlacklistUsersStore = defineStore('blacklistUsers', () => {
     ])
     const userData = ref<Array<UserList>>([])
 
-    const getUser = computed(() => userData.value)
+    const getUser = computed( () => userData.value)
 
     async function findUser(selectId: String, searchValue: String) {
 
