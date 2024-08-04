@@ -117,12 +117,12 @@ const isOpen = ref<Boolean>(false)
 
 async function findUser() {
     await blackListUserStore.findUser(selectValue.value, searchValue.value)
-    blackListUserStore.getUser.forEach((user) => userDetail.value.push(user))
+    blackListUserStore.getUser.forEach( async(user) => await userDetail.value.push(user))
 
     if (selectValue.value === '' || searchValue.value === '') {
         return;
     } else {
-        userDetail.value = blackListUserStore.getUser
+        userDetail.value =  blackListUserStore.getUser
         isOpen.value = true
     }
 }
